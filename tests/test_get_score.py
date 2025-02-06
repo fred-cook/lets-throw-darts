@@ -2,7 +2,7 @@ import numpy as np
 
 import pytest
 
-from lets_throw_darts.score import get_score
+from lets_throw_darts.score import get_score, get_score_cartesian
 from lets_throw_darts.dartboard import Dartboard
 
 N = 10
@@ -61,3 +61,17 @@ def test_segment(angle: float, expected: int):
     check that trebles are worth 3x normal
     """
     assert get_score(radius=70.0, angle=angle) == expected
+
+
+@pytest.mark.parametrize("x,y,expected", [
+    [0.0, 70.0, 20],
+    [0.0, -70.0, 3],
+    [70.0, 0.0, 6],
+    [-70.0, 0.0, 11]
+])
+def test_cartesian_score(x: float, y: float, expected: int):
+    """
+    Check the known positions at NESW on the board have the
+    expected score
+    """
+    assert get_score_cartesian(x, y) == expected

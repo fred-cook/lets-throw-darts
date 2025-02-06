@@ -1,8 +1,12 @@
+from dataclasses import asdict
+
 import matplotlib.pyplot as plt
 from matplotlib.patches import Wedge
 import numpy as np
 
 from lets_throw_darts.dartboard import Dartboard
+from lets_throw_darts.coord_converter import circ_to_cart
+from lets_throw_darts.segment_centres import targets
 
 
 colours = [["black", "white"], ["red", "green"]]
@@ -53,5 +57,14 @@ for angle, number in zip(Dartboard.angles_rad, Dartboard.segments):
         va="center",
         color="black",
     )
+
+x, y = circ_to_cart(**asdict(targets["S19"]))
+plt.plot([x], [y], 'yx')
+
+x, y = circ_to_cart(**asdict(targets["T12"]))
+plt.plot([x], [y], 'yx')
+
+x, y = circ_to_cart(**asdict(targets["D20"]))
+plt.plot([x], [y], 'yx')
 
 plt.show()
