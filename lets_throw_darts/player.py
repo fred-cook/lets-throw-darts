@@ -49,7 +49,6 @@ class BasicPlayer:
             score = self.throw_dart(target)
             print(f"\tdart {dart + 1}: score {score:2d} (aimed for {target})")
             self.score -= score
-            print(f"{self.score=}")
 
             if self.score == 0:
                 print(f"{self.name} checks out with {target} after {self.total_darts} darts")
@@ -75,7 +74,7 @@ class BasicPlayer:
 
 
 if __name__ == "__main__":
-    player = BasicPlayer("Fred", 25.0, 25.0)
+    player = BasicPlayer("Fred", 5.0, 5.0)
 
     while 1:
         if player.take_turn():
