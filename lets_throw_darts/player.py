@@ -5,7 +5,7 @@ import numpy as np
 from lets_throw_darts.coord_converter import circ_to_cart
 from lets_throw_darts.checkouts import checkout_lookup
 from lets_throw_darts.score import get_score_cartesian
-from lets_throw_darts.segment_centres import targets
+from lets_throw_darts.segment_centres import TARGETS
 
 class BasicPlayer:
     """
@@ -69,7 +69,7 @@ class BasicPlayer:
             S/D/T + number, or Bull/Outer
         """
         noise_x, noise_y = np.random.randn(2) * self.noise
-        x, y = circ_to_cart(**asdict(targets[target]))
+        x, y = circ_to_cart(**asdict(TARGETS[target]))
         return get_score_cartesian(x=x + noise_x, y= y + noise_y)
 
 

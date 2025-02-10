@@ -25,5 +25,5 @@ class Dartboard:
         "double_inner",
         "double_outer"
     ]
-    multiplier = np.array([1, 1, 1, 1, 3, 1, 2])
+    multiplier = np.array([1, 1, 1, 1, 3, 1, 2, 0])
 
